@@ -1,6 +1,4 @@
 import numpy as np
-import json
-from io import BytesIO
 from style_bert_vits2.nlp import bert_models
 from style_bert_vits2.constants import Languages
 from style_bert_vits2.models.infer import get_net_g, get_text
@@ -12,12 +10,17 @@ from style_bert_vits2.constants import (
     DEFAULT_STYLE_WEIGHT,
     Languages,
 )
-import os
-from tarfile import open as taropen, TarInfo
 from zstandard import ZstdCompressor
 from style_bert_vits2.tts_model import TTSModel
 import numpy as np
+
+from typing import Optional, List
 from argparse import ArgumentParser
+import os
+from tarfile import open as taropen, TarInfo
+import json
+from io import BytesIO
+
 
 parser = ArgumentParser()
 parser.add_argument("--style_file", required=True)
@@ -94,7 +97,20 @@ model = get_net_g(
 )
 
 
-def forward(x, x_len, sid, tone, lang, bert, style, length_scale, sdp_ratio, noise_scale, noise_scale_w):
+def forward(
+    x,
+    x_len,
+    sid,
+    tone,
+    lang,
+    bert,
+    style,
+    length_scale,
+    sdp_ratio,
+    noise_scale,
+    noise_scale_w,
+    given_tone: Optional[List[int]] = None,
+):
     return model.infer(
         x,
         x_len,
@@ -107,6 +123,7 @@ def forward(x, x_len, sid, tone, lang, bert, style, length_scale, sdp_ratio, noi
         length_scale=length_scale,
         noise_scale=noise_scale,
         noise_scale_w=noise_scale_w,
+        given_tone=given_tone,
     )
 
 
@@ -126,6 +143,7 @@ torch.onnx.export(
         torch.tensor(0.0),
         torch.tensor(0.6777),
         torch.tensor(0.8),
+        None
     ),
     f"../../models/model_{out_name}.onnx",
     verbose=True,
@@ -137,6 +155,7 @@ torch.onnx.export(
         "language": {0: "batch_size", 1: "x_tst_max_length"},
         "bert": {0: "batch_size", 2: "x_tst_max_length"},
         "style_vec": {0: "batch_size"},
+        "given_tone": {0: "batch_size", 1: "x_tst_max_length"},
     },
     input_names=[
         "x_tst",
@@ -149,11 +168,14 @@ torch.onnx.export(
         "length_scale",
         "sdp_ratio",
         "noise_scale",
-        "noise_scale_w"
+        "noise_scale_w",
+        "given_tone",
     ],
     output_names=["output"],
 )
-os.system(f"onnxsim ../../models/model_{out_name}.onnx ../../models/model_{out_name}.onnx")
+os.system(
+    f"onnxsim ../../models/model_{out_name}.onnx ../../models/model_{out_name}.onnx"
+)
 onnxfile = open(f"../../models/model_{out_name}.onnx", "rb").read()
 stylefile = open(f"../../models/style_vectors_{out_name}.json", "rb").read()
 version = bytes("1", "utf8")
