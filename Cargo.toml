@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["./crates/sbv2_api", "./crates/sbv2_core", "./crates/sbv2_bindings", "./crates/sbv2_wasm", "crates/sbv2_editor"]
+members = ["./crates/sbv2_api", "./crates/sbv2_core", "./crates/sbv2_bindings", "./crates/sbv2_wasm"]
 
 [workspace.package]
 version = "0.2.0-alpha6"
