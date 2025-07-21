@@ -123,7 +123,7 @@ impl JTalkProcess {
             .map(|(_letter, tone)| *tone)
             .collect();
         if tone_values.len() == 1 {
-            assert!(tone_values == hash_set![0], "{:?}", tone_values);
+            assert!(tone_values == hash_set![0], "{tone_values:?}");
             Ok(phone_tone_list)
         } else if tone_values.len() == 2 {
             if tone_values == hash_set![0, 1] {
@@ -226,12 +226,12 @@ impl JTalkProcess {
             } else if PUNCTUATIONS.contains(&phone.as_str()) {
                 result.push((phone, 0));
             } else {
-                println!("phones {:?}", phone_with_punct);
-                println!("phone_tone_list: {:?}", phone_tone_list);
-                println!("result: {:?}", result);
-                println!("tone_index: {:?}", tone_index);
-                println!("phone: {:?}", phone);
-                return Err(Error::ValueError(format!("Mismatched phoneme: {}", phone)));
+                println!("phones {phone_with_punct:?}");
+                println!("phone_tone_list: {phone_tone_list:?}");
+                println!("result: {result:?}");
+                println!("tone_index: {tone_index:?}");
+                println!("phone: {phone:?}");
+                return Err(Error::ValueError(format!("Mismatched phoneme: {phone}")));
             }
         }
 
@@ -276,8 +276,7 @@ impl JTalkProcess {
         }
         if !KATAKANA_PATTERN.is_match(&text) {
             return Err(Error::ValueError(format!(
-                "Input must be katakana only: {}",
-                text
+                "Input must be katakana only: {text}"
             )));
         }
 
@@ -285,7 +284,7 @@ impl JTalkProcess {
             let mora = mora.to_string();
             let (consonant, vowel) = MORA_KATA_TO_MORA_PHONEMES.get(&mora).unwrap();
             if consonant.is_none() {
-                text = text.replace(&mora, &format!(" {}", vowel));
+                text = text.replace(&mora, &format!(" {vowel}"));
             } else {
                 text = text.replace(
                     &mora,
@@ -319,7 +318,7 @@ impl JTalkProcess {
             let (string, pron) = self.parse_to_string_and_pron(parts.clone());
             let mut yomi = pron.replace('’', "");
             let word = replace_punctuation(string);
-            assert!(!yomi.is_empty(), "Empty yomi: {}", word);
+            assert!(!yomi.is_empty(), "Empty yomi: {word}");
             if yomi == "、" {
                 if !word
                     .chars()
@@ -330,7 +329,7 @@ impl JTalkProcess {
                     yomi = word.clone();
                 }
             } else if yomi == "？" {
-                assert!(word == "?", "yomi `？` comes from: {}", word);
+                assert!(word == "?", "yomi `？` comes from: {word}");
                 yomi = "?".to_string();
             }
             seq_text.push(word);
