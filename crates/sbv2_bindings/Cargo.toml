@@ -16,7 +16,7 @@ crate-type = ["cdylib"]
 [dependencies]
 anyhow.workspace = true
 ndarray.workspace = true
-pyo3 = { version = "0.25.0", features = ["anyhow"] }
+pyo3 = { version = "0.25.1", features = ["anyhow"] }
 sbv2_core = { path = "../sbv2_core", features = ["std"], default-features = false }
 
 [features]
