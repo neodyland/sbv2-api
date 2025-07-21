@@ -1,7 +1,7 @@
 target/
 models/
 !models/.gitkeep
-venv/
+.venv/
 .env
 *.wav
 node_modules/
