@@ -127,20 +127,20 @@ impl JTalkProcess {
             Ok(phone_tone_list)
         } else if tone_values.len() == 2 {
             if tone_values == hash_set![0, 1] {
-                return Ok(phone_tone_list);
+                Ok(phone_tone_list)
             } else if tone_values == hash_set![-1, 0] {
-                return Ok(phone_tone_list
+                Ok(phone_tone_list
                     .iter()
                     .map(|x| {
                         let new_tone = if x.1 == -1 { 0 } else { 1 };
                         (x.0.clone(), new_tone)
                     })
-                    .collect());
+                    .collect())
             } else {
-                return Err(Error::ValueError("Invalid tone values 0".to_string()));
+                Err(Error::ValueError("Invalid tone values 0".to_string()))
             }
         } else {
-            return Err(Error::ValueError("Invalid tone values 1".to_string()));
+            Err(Error::ValueError("Invalid tone values 1".to_string()))
         }
     }
 
