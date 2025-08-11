@@ -173,8 +173,15 @@ pub fn parse_text_blocking(
 }
 
 pub fn array_to_vec(audio_array: Array3<f32>) -> Result<Vec<u8>> {
+    // If SBV2_FORCE_STEREO is set ("1"/"true"), duplicate mono to stereo
+    let force_stereo = std::env::var("SBV2_FORCE_STEREO")
+        .ok()
+        .map(|v| matches!(v.as_str(), "1" | "true" | "TRUE" | "True"))
+        .unwrap_or(false);
+
+    let channels: u16 = if force_stereo { 2 } else { 1 };
     let spec = WavSpec {
-        channels: 1,
+        channels,
         sample_rate: 44100,
         bits_per_sample: 32,
         sample_format: SampleFormat::Float,
@@ -183,8 +190,16 @@ pub fn array_to_vec(audio_array: Array3<f32>) -> Result<Vec<u8>> {
     let mut writer = WavWriter::new(&mut cursor, spec)?;
     for i in 0..audio_array.shape()[0] {
         let output = audio_array.slice(s![i, 0, ..]).to_vec();
-        for sample in output {
-            writer.write_sample(sample)?;
+        if force_stereo {
+            for sample in output {
+                // Write to Left and Right channels
+                writer.write_sample(sample)?;
+                writer.write_sample(sample)?;
+            }
+        } else {
+            for sample in output {
+                writer.write_sample(sample)?;
+            }
         }
     }
     writer.finalize()?;
