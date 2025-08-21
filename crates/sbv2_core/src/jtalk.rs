@@ -1,8 +1,9 @@
 /*
-本コードは
+このファイルのコードは
 https://github.com/litagin02/Style-Bert-VITS2/blob/master/style_bert_vits2/nlp/japanese/g2p.py
 を参考にRustに書き換えています。
 
+以下はライセンスです。
                    GNU LESSER GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
