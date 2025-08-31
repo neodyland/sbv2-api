@@ -3,7 +3,7 @@ resolver = "3"
 members = ["./crates/sbv2_api", "./crates/sbv2_core", "./crates/sbv2_bindings", "./crates/sbv2_wasm"]
 
 [workspace.package]
-version = "0.2.0-alpha6"
+version = "0.2.0-alpha8"
 edition = "2021"
 description = "Style-Bert-VITSの推論ライブラリ"
 license = "MIT"

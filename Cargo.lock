@@ -2308,7 +2308,7 @@ checksum = "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f"
 
 [[package]]
 name = "sbv2_api"
-version = "0.2.0-alpha6"
+version = "0.2.0-alpha8"
 dependencies = [
  "anyhow",
  "axum",
@@ -2324,7 +2324,7 @@ dependencies = [
 
 [[package]]
 name = "sbv2_bindings"
-version = "0.2.0-alpha6"
+version = "0.2.0-alpha8"
 dependencies = [
  "anyhow",
  "ndarray",
@@ -2334,7 +2334,7 @@ dependencies = [
 
 [[package]]
 name = "sbv2_core"
-version = "0.2.0-alpha6"
+version = "0.2.0-alpha8"
 dependencies = [
  "anyhow",
  "base64 0.22.1",
@@ -2360,7 +2360,7 @@ dependencies = [
 
 [[package]]
 name = "sbv2_wasm"
-version = "0.2.0-alpha6"
+version = "0.2.0-alpha8"
 dependencies = [
  "js-sys",
  "ndarray",
