@@ -91,7 +91,7 @@ impl TTSModelHolder {
             }
             let model = model::load_model(&aivmx_bytes, false)?;
             let metadata = model.metadata()?;
-            if let Some(aivm_style_vectors) = metadata.custom("aivm_style_vectors")? {
+            if let Some(aivm_style_vectors) = metadata.custom("aivm_style_vectors") {
                 let aivm_style_vectors = BASE64_STANDARD.decode(aivm_style_vectors)?;
                 let style_vectors = Cursor::new(&aivm_style_vectors);
                 let reader = npyz::NpyFile::new(style_vectors)?;
