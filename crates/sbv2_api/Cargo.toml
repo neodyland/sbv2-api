@@ -15,7 +15,7 @@ dotenvy.workspace = true
 env_logger.workspace = true
 log = "0.4.28"
 sbv2_core = { version = "0.2.0-alpha6", path = "../sbv2_core", features = ["aivmx"] }
-serde = { version = "1.0.210", features = ["derive"] }
+serde = { version = "1.0.223", features = ["derive"] }
 tokio = { version = "1.47.1", features = ["full"] }
 utoipa = { version = "5.4.0", features = ["axum_extras"] }
 utoipa-scalar = { version = "0.3.0", features = ["axum"] }
