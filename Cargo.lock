@@ -110,9 +110,9 @@ checksum = "ace50bade8e6234aa140d9a2f552bbee1db4d353f69b8217bc503490fc1a9f26"
 
 [[package]]
 name = "axum"
-version = "0.8.5"
+version = "0.8.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "98e529aee37b5c8206bb4bf4c44797127566d72f76952c970bd3d1e85de8f4e2"
+checksum = "8a18ed336352031311f4e0b4dd2ff392d4fbb370777c9d18d7fc9d7359f73871"
 dependencies = [
  "axum-core",
  "bytes",
@@ -143,9 +143,9 @@ dependencies = [
 
 [[package]]
 name = "axum-core"
-version = "0.5.4"
+version = "0.5.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0ac7a6beb1182c7e30253ee75c3e918080bfb83f5a3023bcdf7209d85fd147e6"
+checksum = "59446ce19cd142f8833f856eb31f3eb097812d1479ab224f54d72428ca21ea22"
 dependencies = [
  "bytes",
  "futures-core",
@@ -2320,7 +2320,7 @@ checksum = "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f"
 
 [[package]]
 name = "sbv2_api"
-version = "0.2.0-alpha8"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "axum",
@@ -2336,7 +2336,7 @@ dependencies = [
 
 [[package]]
 name = "sbv2_bindings"
-version = "0.2.0-alpha8"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "ndarray",
@@ -2346,7 +2346,7 @@ dependencies = [
 
 [[package]]
 name = "sbv2_core"
-version = "0.2.0-alpha8"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "base64 0.22.1",
@@ -2372,7 +2372,7 @@ dependencies = [
 
 [[package]]
 name = "sbv2_wasm"
-version = "0.2.0-alpha8"
+version = "0.2.0"
 dependencies = [
  "js-sys",
  "ndarray",
