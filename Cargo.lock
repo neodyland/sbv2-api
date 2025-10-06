@@ -1754,7 +1754,7 @@ checksum = "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d"
 [[package]]
 name = "ort"
 version = "2.0.0-rc.10"
-source = "git+https://github.com/pykeio/ort.git#df992cb910eb94b55abcc9ead01d2e8d69b035f7"
+source = "git+https://github.com/pykeio/ort.git#a1534795948ba56e1b83fe4c64c8292b30a177f3"
 dependencies = [
  "libloading",
  "ndarray",
@@ -1767,7 +1767,7 @@ dependencies = [
 [[package]]
 name = "ort-sys"
 version = "2.0.0-rc.10"
-source = "git+https://github.com/pykeio/ort.git#df992cb910eb94b55abcc9ead01d2e8d69b035f7"
+source = "git+https://github.com/pykeio/ort.git#a1534795948ba56e1b83fe4c64c8292b30a177f3"
 dependencies = [
  "flate2",
  "hmac-sha256",
@@ -2320,7 +2320,7 @@ checksum = "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f"
 
 [[package]]
 name = "sbv2_api"
-version = "0.2.0-alpha8"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "axum",
@@ -2336,7 +2336,7 @@ dependencies = [
 
 [[package]]
 name = "sbv2_bindings"
-version = "0.2.0-alpha8"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "ndarray",
@@ -2346,7 +2346,7 @@ dependencies = [
 
 [[package]]
 name = "sbv2_core"
-version = "0.2.0-alpha8"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "base64 0.22.1",
@@ -2372,7 +2372,7 @@ dependencies = [
 
 [[package]]
 name = "sbv2_wasm"
-version = "0.2.0-alpha8"
+version = "0.2.0"
 dependencies = [
  "js-sys",
  "ndarray",
