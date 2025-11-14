@@ -1550,6 +1550,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "ndarray"
+version = "0.17.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0c7c9125e8f6f10c9da3aad044cc918cf8784fa34de857b1aa68038eb05a50a9"
+dependencies = [
+ "matrixmultiply",
+ "num-complex",
+ "num-integer",
+ "num-traits",
+ "portable-atomic",
+ "portable-atomic-util",
+ "rawpointer",
+]
+
+[[package]]
 name = "nom"
 version = "7.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1707,7 +1722,7 @@ version = "2.0.0-rc.10"
 source = "git+https://github.com/pykeio/ort.git#95d520a6f650a84467372b3f0a81dfce924260d3"
 dependencies = [
  "libloading",
- "ndarray",
+ "ndarray 0.16.1",
  "ort-sys",
  "smallvec 2.0.0-alpha.11",
  "tracing",
@@ -2283,7 +2298,7 @@ name = "sbv2_bindings"
 version = "0.2.0"
 dependencies = [
  "anyhow",
- "ndarray",
+ "ndarray 0.17.1",
  "pyo3",
  "sbv2_core",
 ]
@@ -2299,7 +2314,7 @@ dependencies = [
  "env_logger",
  "hound",
  "jpreprocess",
- "ndarray",
+ "ndarray 0.17.1",
  "npyz",
  "num_cpus",
  "once_cell",
@@ -2319,7 +2334,7 @@ name = "sbv2_wasm"
 version = "0.2.0"
 dependencies = [
  "js-sys",
- "ndarray",
+ "ndarray 0.17.1",
  "once_cell",
  "sbv2_core",
  "wasm-bindgen",
