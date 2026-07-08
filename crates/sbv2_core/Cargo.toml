@@ -16,7 +16,7 @@ env_logger.workspace = true
 hound = "3.5.1"
 jpreprocess = { version = "0.13.2", features = ["naist-jdic"] }
 ndarray.workspace = true
-npyz = { version = "0.8.4", optional = true }
+npyz = { version = "0.9.1", optional = true }
 num_cpus = "1.17.0"
 once_cell.workspace = true
 ort = { git = "https://github.com/pykeio/ort.git", version = "2.0.0-rc.9", optional = true }
